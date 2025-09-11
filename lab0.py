@@ -1,3 +1,6 @@
+import random
+import time
+
 def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
@@ -16,9 +19,17 @@ def selection_sort(arr):
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
     return arr
 
-size = int(input("Enter number of elements: "))
-arr = list(map(int, input("Enter elements: ").split()))
+arr = [random.randint(1, 10000) for _ in range(1000)]
 
-print("Original array:", arr)
-print("Bubble Sort:", bubble_sort(arr.copy()))
-print("Selection Sort:", selection_sort(arr.copy()))
+arr1 = arr.copy()
+arr2 = arr.copy()
+
+start = time.time()
+bubble_sort(arr1)
+end = time.time()
+print("Bubble Sort time:", end - start, "seconds")
+
+start = time.time()
+selection_sort(arr2)
+end = time.time()
+print("Selection Sort time:", end - start, "seconds")
